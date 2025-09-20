@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
+import Navbar from "../../public/components/navbar";
 import "./globals.css";
+import { Poppins } from "next/font/google";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Welcome to my portfolio!",
-};
+const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 
 export default function RootLayout({
   children,
@@ -12,10 +10,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
+    <html
+      lang="en"
+      title="Portfolio"
+      className="select-none bg-[#ececec] text-[3em] ${poppins.className}"
+    >
+      <nav>
+        <Navbar />
+      </nav>
+      <body>{children}</body>
     </html>
   );
 }
